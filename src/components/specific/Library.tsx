@@ -39,10 +39,12 @@ const Library = (props: LibraryProps) => {
 
   useEffect(() => {
     if (scrollToLetter) {
+      //Tìm element có data-name có chữ cái đầu được chọn
       const targetElement = Object.values(elementRefs.current).find(
         (ref) => ref && ref.dataset.name && ref.dataset.name.startsWith(scrollToLetter.toLowerCase())
       );
       if (targetElement) {
+        //Thực hiện scroll
         targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }

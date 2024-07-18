@@ -12,6 +12,7 @@
   cursor: pointer;
   text-align: center;
   pointer-events: auto;
+  color: grey;
 }
 .element .elementName {
   padding: 12px 0;

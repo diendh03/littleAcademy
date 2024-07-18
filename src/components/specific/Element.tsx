@@ -13,6 +13,7 @@ type ElementProps = {
   onDragEnd?: (event: React.DragEvent<HTMLDivElement>) => void;
 };
 
+//Dùng forwardRef để nhận ref từ Component cha
 const Element = forwardRef<HTMLDivElement, ElementProps>((props, ref) => {
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     e.dataTransfer.setData(
@@ -37,15 +38,11 @@ const Element = forwardRef<HTMLDivElement, ElementProps>((props, ref) => {
       style={{
         cursor: 'pointer',
         pointerEvents: 'auto',
-        color: props.type === 'inLibrary' ? 'black' : 'grey',
         ...props?.style,
       }}
-      draggable={true}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
       ref={ref as Ref<HTMLDivElement>}
     >
-      <img src={props.src} alt={props.name} />
+      <img src={props.src} alt={props.name} draggable={true} onDragStart={handleDragStart} onDragEnd={handleDragEnd} />
       <div className={classes.elementName}>{props.name}</div>
     </div>
   );
