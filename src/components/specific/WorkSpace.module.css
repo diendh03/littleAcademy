@@ -1,18 +1,19 @@
 .workspace {
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 .side {
-  width: 250px;
   height: 100%;
-  right: 0;
   overflow: hidden;
   z-index: 100;
-  top: 0;
-  position: absolute;
+  grid-column: span 2 / span 2;
+  display: flex;
+  flex-direction: row;
+  column-gap: 2px;
 }
 .board {
-  background-image: url('/public/images/library-background.png');
-  width: 100%;
-  height: 100%;
+  background-image: url('/public/images/background.png');
+  grid-column: span 10 / span 10;
 }
