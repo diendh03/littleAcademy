@@ -9,9 +9,7 @@
   align-items: center;
 }
 .elementName {
-  cursor: pointer;
   text-align: center;
-  pointer-events: auto;
   color: grey;
 }
 .element .elementName {

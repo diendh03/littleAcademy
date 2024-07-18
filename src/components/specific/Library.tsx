@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Element } from '~/components/specific';
 //Others
 import { ElementDataLibrary } from '~/utils/interface/common';
+import { ElementType } from '~/utils/enum';
 //Styles
 import cssElement from './Element.module.css';
 import cssLibrary from './Library.module.css';
@@ -54,7 +55,7 @@ const Library = (props: LibraryProps) => {
     return initial.map((item) => (
       <Element
         id={item.id}
-        type='inLibrary'
+        type={ElementType.IN_LIBRARY}
         key={item.id}
         name={item.name}
         className={cssElement.element}

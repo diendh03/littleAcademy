@@ -36,13 +36,18 @@ const Element = forwardRef<HTMLDivElement, ElementProps>((props, ref) => {
       className={props.className}
       data-name={props.name}
       style={{
-        cursor: 'pointer',
-        pointerEvents: 'auto',
         ...props?.style,
       }}
       ref={ref as Ref<HTMLDivElement>}
     >
-      <img src={props.src} alt={props.name} draggable={true} onDragStart={handleDragStart} onDragEnd={handleDragEnd} />
+      <img
+        src={props.src}
+        alt={props.name}
+        style={{ cursor: 'pointer', pointerEvents: 'auto' }}
+        draggable={true}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+      />
       <div className={classes.elementName}>{props.name}</div>
     </div>
   );

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 //Component
 import { Alphabet, Element, Library } from '~/components/specific';
 //Others
+import { ElementType } from '~/utils/enum';
 import { ElementDataLibrary, ElementDataWorkspace } from '~/utils/interface/common';
 import { recipes } from '~/data';
 //Styles
@@ -27,8 +28,8 @@ const Workspace = (props: WorkspaceProps) => {
     const element = JSON.parse(e.dataTransfer.getData('element')) as ElementDataWorkspace;
 
     //Check nếu kéo từ thư viện thì tạo mới element trên workspace (Không thì chỉ thay đổi vị trí trên workspace)
-    if (element.type === 'inLibrary') {
-      const newElement = { ...element, x, y, id: Date.now(), type: 'inSpace' };
+    if (element.type === ElementType.IN_LIBRARY) {
+      const newElement = { ...element, x, y, id: Date.now(), type: ElementType.IN_SPACE };
       setElementDropped((prev) => [...prev, newElement]);
     } else {
       const updatedDroppedElements = elementDropped.map((el) => (el.id === element.id ? { ...el, x, y } : el));
@@ -69,14 +70,11 @@ const Workspace = (props: WorkspaceProps) => {
               src: `./images/elements/${comb.result}.png`,
               x: element.x,
               y: element.y,
-              type: 'inSpace',
+              type: ElementType.IN_SPACE,
             };
-
             setNewElement({ name: mergedElement.name, id: mergedElement.id });
-
             const updatedDroppedElements = elementDropped.filter((e) => e.id !== element.id && e.id !== newElement.id);
             setElementDropped([...updatedDroppedElements, mergedElement]);
-
             break;
           }
         }
@@ -91,7 +89,6 @@ const Workspace = (props: WorkspaceProps) => {
 
   // Xử lý khi đã thả con chuột (Update lại vị trí và gọi hàm check kết hợp)
   const handleDragEnd = (index: number) => (e: React.DragEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX;
     const y = e.clientY;
 
