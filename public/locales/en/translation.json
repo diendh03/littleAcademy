@@ -1,0 +1,12 @@
+{
+  "// with_param": "Hi, {{name}}",
+  "// use_with_param": "t('welcome', { name: 'DoHuuDien' });",
+  "// with_object": {
+    "it": "Italian",
+    "en": "English"
+  },
+  "//_use_with_object": "t('language.vi');",
+
+  "// with_component": "Here's an example with a component: <0>{{component}}</0> , <1>{{title}}</1>",
+  "// use_with_component": "<Trans i18nKey='with_component' values={{ component: 'React component', title: 'Dien' }} components={[<strong className={cx('component_text')} />, <i />]} />;"
+}

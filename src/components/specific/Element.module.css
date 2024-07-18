@@ -1,0 +1,27 @@
+.element {
+  width: 200px;
+  height: 50px;
+  padding: 5px 4px;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
+}
+.elementName {
+  cursor: pointer;
+  text-align: center;
+  pointer-events: auto;
+}
+.element .elementName {
+  padding: 12px 0;
+}
+.element img,
+.element span {
+  padding-right: 3px;
+  cursor: pointer;
+  pointer-events: auto;
+  float: left;
+  width: 50px;
+  height: 50px;
+}
